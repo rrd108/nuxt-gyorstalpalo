@@ -1,8 +1,7 @@
 <script setup>
   import { ref } from 'vue'
 
-  const { data } = await useFetch('https://hur.webmania.cc/products.json')
-  const products = useState('products', () => data.value.products)
+  const products = useState('products')
 
   const showToast = ref(false)
 </script>

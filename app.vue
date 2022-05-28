@@ -1,4 +1,7 @@
-<script setup></script>
+<script setup>
+  const { data } = await useFetch('https://hur.webmania.cc/products.json')
+  const products = useState('products', () => data.value.products)
+</script>
 
 <template>
   <div>
