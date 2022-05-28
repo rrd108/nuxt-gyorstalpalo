@@ -2,6 +2,7 @@
   import { ref } from 'vue'
 
   const { data } = await useFetch('https://hur.webmania.cc/products.json')
+  const products = useState('products', () => data.value.products)
 
   const showToast = ref(false)
 </script>
@@ -13,7 +14,7 @@
       A termék a kosárba rakva <span @click="showToast = false">✖</span>
     </div>
     <main>
-      <section v-for="product in data.products">
+      <section v-for="product in products">
         <h2>{{ product.name }}</h2>
         <img :src="product.picture" />
         <p>{{ product.description }}</p>
@@ -27,7 +28,7 @@
               />
             </svg>
           </button>
-          <NuxtLink :href="`/product/${product.name}`">
+          <NuxtLink :to="`/product/${product.name}`">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
               <!--! Font Awesome Pro 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
               <path
