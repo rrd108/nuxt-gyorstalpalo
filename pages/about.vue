@@ -1,4 +1,6 @@
-<script setup></script>
+<script setup>
+  useHead({ title: 'About - Vue SEO Nuxt' })
+</script>
 
 <template>
   <h1>About page</h1>

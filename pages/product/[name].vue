@@ -2,6 +2,7 @@
   const route = useRoute()
   const products = useState('products')
   const product = products.value.find(p => p.name === route.params.name)
+  useHead({ title: `${product.name} - Vue SEO Nuxt` })
 </script>
 
 <template>

@@ -1,6 +1,8 @@
 <script setup>
   import { ref } from 'vue'
 
+  useHead({ title: 'Shop - Vue SEO Nuxt' })
+
   const products = useState('products')
 
   const showToast = ref(false)
