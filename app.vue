@@ -11,9 +11,7 @@
         <li><NuxtLink to="/about">About</NuxtLink></li>
       </ul>
     </nav>
-    <main>
-      <NuxtPage />
-    </main>
+    <main><NuxtPage /></main>
   </div>
 </template>
 

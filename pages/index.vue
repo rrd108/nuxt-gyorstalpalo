@@ -1,27 +1,27 @@
 <script setup>
   import { ref } from 'vue'
 
-  useHead({ title: 'Shop - Vue SEO Nuxt' })
-
   const products = useState('products')
-
   const showToast = ref(false)
+
+  useHead({ title: 'Shop - Nuxt Gyorstalpaló' })
 </script>
 
 <template>
   <div>
     <h1>Shop</h1>
-    <div id="toast" v-if="showToast">
-      A termék a kosárba rakva <span @click="showToast = false">✖</span>
-    </div>
-    <main>
+    <div id="products">
       <section v-for="product in products">
         <h2>{{ product.name }}</h2>
-        <img :src="product.picture" />
+        <img :src="product.picture" :alt="product.name" />
         <p>{{ product.description }}</p>
         <h3>{{ Intl.NumberFormat().format(product.price) }} Ft</h3>
         <div class="actions">
-          <button v-if="product.stock" @click="showToast = true">
+          <button
+            title="Kosárba"
+            v-if="product.stock"
+            @click="showToast = true"
+          >
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
               <!-- Font Awesome Pro 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) -->
               <path
@@ -31,21 +31,24 @@
           </button>
           <NuxtLink :to="`/product/${product.name}`">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-              <!--! Font Awesome Pro 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
+              <!-- Font Awesome Pro 5.15.4 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) -->
               <path
-                d="M256 0C114.6 0 0 114.6 0 256s114.6 256 256 256s256-114.6 256-256S397.4 0 256 0zM256 128c17.67 0 32 14.33 32 32c0 17.67-14.33 32-32 32S224 177.7 224 160C224 142.3 238.3 128 256 128zM296 384h-80C202.8 384 192 373.3 192 360s10.75-24 24-24h16v-64H224c-13.25 0-24-10.75-24-24S210.8 224 224 224h32c13.25 0 24 10.75 24 24v88h16c13.25 0 24 10.75 24 24S309.3 384 296 384z"
+                d="M256 8C119.043 8 8 119.083 8 256c0 136.997 111.043 248 248 248s248-111.003 248-248C504 119.083 392.957 8 256 8zm0 110c23.196 0 42 18.804 42 42s-18.804 42-42 42-42-18.804-42-42 18.804-42 42-42zm56 254c0 6.627-5.373 12-12 12h-88c-6.627 0-12-5.373-12-12v-24c0-6.627 5.373-12 12-12h12v-64h-12c-6.627 0-12-5.373-12-12v-24c0-6.627 5.373-12 12-12h64c6.627 0 12 5.373 12 12v100h12c6.627 0 12 5.373 12 12v24z"
               />
             </svg>
           </NuxtLink>
         </div>
         <p v-if="!product.stock">Nem rendelhető</p>
       </section>
-    </main>
+    </div>
+    <div id="toast" v-show="showToast">
+      A termék kosárba rakva <span @click="showToast = false">✖</span>
+    </div>
   </div>
 </template>
 
 <style scoped>
-  main {
+  #products {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 1em;

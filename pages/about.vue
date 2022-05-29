@@ -1,9 +1,18 @@
 <script setup>
-  useHead({ title: 'About - Vue SEO Nuxt' })
+  useHead({ title: 'Rólunk - Nuxt Gyorstalpaló' })
 </script>
 
 <template>
-  <h1>About page</h1>
+  <div>
+    <h1>About</h1>
+    <p>
+      Lorem ipsum, dolor sit amet consectetur adipisicing elit. Pariatur,
+      sapiente temporibus odio architecto optio, dolor ex nesciunt ipsum
+      voluptatum amet doloribus facilis incidunt recusandae dolore doloremque
+      provident sequi inventore reiciendis qui cum voluptatibus eaque labore.
+      Dolor perspiciatis alias vero tempore!
+    </p>
+  </div>
 </template>
 
 <style scoped></style>
